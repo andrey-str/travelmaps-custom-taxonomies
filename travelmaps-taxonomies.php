@@ -4,7 +4,7 @@ Plugin Name: Travel Maps Custom Taxonomies
 Plugin URI: http://github.com/andrey-str/travelmaps-custom-taxonomies
 Author: Andrey Streltsov
 Version: 1.0
-Author URI: http:// anse.me
+Author URI: http://anse.me
 */
 
 //hook into the init action and call create_book_taxonomies when it fires
