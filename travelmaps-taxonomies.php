@@ -4,15 +4,15 @@ Plugin Name: Travel Maps Custom Taxonomies
 Plugin URI: http://github.com/andrey-str/travelmaps-custom-taxonomies
 Author: Andrey Streltsov
 Version: 1.0
-Author URI: http://anse.me
+Author URI: http:// anse.me
 */
 
 //hook into the init action and call create_book_taxonomies when it fires
 add_action( 'init', 'create_places_hierarchical_taxonomy', 0 );
 add_action( 'init', 'create_activities_plain_taxonomy', 0 );
+add_action( 'init', 'create_events_plain_taxonomy', 0 );
 
 //create a custom taxonomy name it topics for your posts
-
 function create_places_hierarchical_taxonomy() {
 
 // Add new taxonomy, make it hierarchical like categories
@@ -47,7 +47,6 @@ function create_places_hierarchical_taxonomy() {
 
 
 //create a custom taxonomy name it topics for your posts
-
 function create_activities_plain_taxonomy() {
 
 // Add new taxonomy, make it hierarchical like categories
@@ -76,6 +75,39 @@ function create_activities_plain_taxonomy() {
     'show_admin_column' => true,
     'query_var' => true,
     'rewrite' => array( 'slug' => 'activity' ),
+  ));
+
+}
+
+//create a custom taxonomy name it topics for your posts
+function create_events_plain_taxonomy() {
+
+// Add new taxonomy, make it hierarchical like categories
+//first do the translations part for GUI
+
+  $labels = array(
+    'name' => _x( 'event', 'taxonomy general name' ),
+    'singular_name' => _x( 'Event', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Search Events' ),
+    'all_items' => __( 'All Events' ),
+    'parent_item' => __( 'Parent Event' ),
+    'parent_item_colon' => __( 'Parent Event:' ),
+    'edit_item' => __( 'Edit Event' ), 
+    'update_item' => __( 'Update Event' ),
+    'add_new_item' => __( 'Add New Event' ),
+    'new_item_name' => __( 'New Event Name' ),
+    'menu_name' => __( 'Events' ),
+  );    
+
+// Now register the taxonomy
+
+  register_taxonomy('event',array('post'), array(
+    'hierarchical' => false,
+    'labels' => $labels,
+    'show_ui' => true,
+    'show_admin_column' => true,
+    'query_var' => true,
+    'rewrite' => array( 'slug' => 'event' ),
   ));
 
 }
